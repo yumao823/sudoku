@@ -5,7 +5,6 @@ import './App.css';
 
 const App = () => {
   const dispatch = useDispatch()
-  console.log("*******  ", useSelector(state => console.log("%%%%", state)))
 
   useEffect(() => {
     dispatch({
