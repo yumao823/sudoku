@@ -1,7 +1,21 @@
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch()
+  console.log("*******  ", useSelector(state => console.log("%%%%", state)))
+
+  useEffect(() => {
+    dispatch({
+      type: "USER_FETCH_REQUEST",
+      payload: {
+        isbnNum: '0545162076',
+      }
+    })
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
