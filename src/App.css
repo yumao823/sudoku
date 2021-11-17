@@ -32,6 +32,10 @@
   cursor: pointer;
 }
 
+.grid_item:hover {
+  background-color: #92c4f6;
+}
+
 .grid_item.active {
   background-color: red;
 }
