@@ -4,7 +4,15 @@ import { Button } from 'react-bootstrap'
 const NumPad = () => {
   return (
     <div>
-      <Button>1</Button>
+      {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => 
+        <Button
+          className="m-1"
+          key={`nb-${item}`}
+          variant="success"
+        >
+          {item}
+        </Button>
+      )}
     </div>
   )
 }
