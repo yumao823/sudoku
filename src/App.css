@@ -29,4 +29,9 @@
 
 .grid_item {
   border: 1px solid #16697a;
+  cursor: pointer;
+}
+
+.grid_item.active {
+  background-color: red;
 }
