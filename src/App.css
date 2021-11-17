@@ -1,12 +1,15 @@
 .App {
   display: flex;
   justify-content: center;
+  font-weight: bold;
   padding-top: 100px;
 }
 
 .container {
   width: 500px;
-  padding: 30px;
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px solid #caf3fe;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,4 +17,16 @@
 
 .logo {
   width: 50px;
+}
+
+
+.grid_container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  border: 2px solid #16697a;
+  text-align: center;
+}
+
+.grid_item {
+  border: 1px solid #16697a;
 }
