@@ -23,7 +23,7 @@
 .grid_container {
   display: grid;
   grid-template-columns: auto auto auto;
-  border: 2px solid #16697a;
+  border: 1px solid #16697a;
   text-align: center;
 }
 
