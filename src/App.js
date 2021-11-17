@@ -17,7 +17,6 @@ const App = () => {
 
   return (
     <div className="App">
-      <Button>1</Button>
     </div>
   );
 }
