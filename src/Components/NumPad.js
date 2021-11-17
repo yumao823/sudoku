@@ -6,6 +6,7 @@ const NumPad = () => {
     <div className="d-flex justify-content-between py-2">
       {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => 
         <Button
+          className="fw-bold px-3"
           key={`nb-${item}`}
           variant="success"
         >

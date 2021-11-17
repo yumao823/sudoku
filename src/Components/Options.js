@@ -13,7 +13,7 @@ const Options = () => {
 
   return (
     <div className="d-flex justify-content-between mb-3">
-      <Button variant="light">New Game</Button>
+      <Button className="fw-bold" variant="light">New Game</Button>
       <Select value={level} options={levels} onChange={e => setLevel(e)} />
     </div>
   )
