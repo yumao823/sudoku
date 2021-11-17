@@ -1,8 +1,11 @@
 import React from 'react'
+import NumPad from './NumPad'
 
 const Game = () => {
   return (
-    <div>Game</div>
+    <div>
+      <NumPad />
+    </div>
   )
 }
 

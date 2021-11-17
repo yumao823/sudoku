@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from 'react-bootstrap'
+import Header from './Components/Header';
+import Game from './Components/Game';
 import './App.css';
 
 const App = () => {
@@ -17,6 +18,10 @@ const App = () => {
 
   return (
     <div className="App">
+      <div className="container">
+        <Header />
+        <Game />
+      </div>
     </div>
   );
 }
