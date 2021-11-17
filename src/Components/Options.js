@@ -10,14 +10,11 @@ const levels = [
 
 const Options = () => {
   const [level, setLevel] = useState(levels[0])
-  const handleSelect = e => {
-    setLevel(e)
-  }
 
   return (
     <div className="d-flex justify-content-between mb-3">
       <Button variant="light">New Game</Button>
-      <Select value={level} options={levels} onChange={handleSelect} />
+      <Select value={level} options={levels} onChange={e => setLevel(e)} />
     </div>
   )
 }
