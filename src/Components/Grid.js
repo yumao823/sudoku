@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import classNames from 'classnames'
 
 const GridInput = ({ data, row, col }) => {
   const dispatch = useDispatch()
@@ -12,7 +13,13 @@ const GridInput = ({ data, row, col }) => {
     <input
       disabled={data}
       value={data || ''}
-      className="grid_item py-2"
+      className={classNames(
+        'grid_item py-2',
+        col === 0 && 'bold_border_left',
+        row === 0 && 'bold_border_top',
+        col % 3 === 2 && 'bold_border_right',
+        row % 3 === 2 && 'bold_border_bottom'
+      )}
       onChange={handleChange}
     />
   )
@@ -26,7 +33,6 @@ const GridItem = ({ grid, index }) => (
 
 const Grid = () => {
   const grids = useSelector(state => state.state.grids)
-  console.log("%", useSelector(state => state.state.rootgrids))
 
   return (
     <div className="grid_container mb-3">

@@ -34,7 +34,7 @@ const userReducer = (state = initialstate, action) => {
         case 'hard':
           count = 6
           break;
-        default: count = 3
+        default: count = 4
           break;
       }
       temp.forEach(grid => {
