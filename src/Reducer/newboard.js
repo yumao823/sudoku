@@ -1,4 +1,3 @@
-let counter
 const numArray = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 function shuffle( array ) {
@@ -13,6 +12,7 @@ function shuffle( array ) {
 const rowSafe = (puzzleArray, emptyCell, num) => {
   return puzzleArray[ emptyCell.rowIndex ].indexOf(num) === -1 
 }
+
 const colSafe = (puzzleArray, emptyCell, num) => {
   return !puzzleArray.some(row => row[ emptyCell.colIndex ] === num )
 }
@@ -58,8 +58,7 @@ export const newBoard = startingBoard => {
 
   if (!emptyCell) return startingBoard
 
-  for (let num of shuffle(numArray) ) {   
-    counter++
+  for (let num of shuffle(numArray) ) {
     if ( safeToPlace( startingBoard, emptyCell, num) ) {
       startingBoard[ emptyCell.rowIndex ][ emptyCell.colIndex ] = num
       if ( newBoard(startingBoard) ) return startingBoard 
