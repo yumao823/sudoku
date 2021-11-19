@@ -1,25 +1,35 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+const GridInput = ({ data, row, col }) => {
+  const dispatch = useDispatch()
+
+  const handleChange = e => {
+    dispatch({ type: 'NEW_ITEM', value: e.target.value, row, col })
+  }
+
+  return (
+    <input
+      disabled={data}
+      value={data || ''}
+      className="grid_item py-2"
+      onChange={handleChange}
+    />
+  )
+} 
 
 const GridItem = ({ grid, index }) => {
-  const handleGridItem = idx => {
-    console.log(index, " : ", idx)
-  }
   return (
     <div className="grid_container">
       {grid.map((item, idx) => (
-        <input
-          disabled={item}
-          className="grid_item py-2" key={`g-${idx}`}
-          value={item}
-          onClick={() => handleGridItem(idx)}
-        >
-        </input>
+        <GridInput key={`g-${idx}`} data={item} row={index} col={idx} />
       ))}
     </div>
   )
 }
 
-const Grid = ({grids}) => {
+const Grid = () => {
+  const grids = useSelector(state => state.state.grids)
   return (
     <div className="grid_container mb-3">
       {grids.map((grid, index) => (
