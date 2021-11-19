@@ -1,4 +1,5 @@
-import { clone } from 'ramda';
+import { clone, equals } from 'ramda';
+import { toast } from 'react-toastify'
 
 let initialstate = {
   grids: [
@@ -21,18 +22,35 @@ const userReducer = (state = initialstate, action) => {
       temp1.map(grid => {
         grid.sort(() => Math.random() - 0.5)
       })
-      let temp2 = temp1
+      let temp2 = clone(temp1)
       temp2.forEach(grid => {
-        for(let i=0; i<3; i++) grid[Math.floor((Math.random()*grid.length))] = 0
+         grid[Math.floor((Math.random()*grid.length))] = 0
       });
       return { ...state, rootgrids: temp1, grids: temp2 }
     }
+
     case "NEW_ITEM": {
       const { value, row, col } = action
-      let temp = clone(state.grids)
-      temp[row][col] = value
-      return { ...state, grids: temp }
+      const _value = Number(value)
+      if(state.rootgrids[row][col] === _value) {
+        let temp = clone(state.grids)
+        temp[row][col] = _value
+        if (equals(state.rootgrids, temp)) {
+          toast.success("Successed", {
+            position: "top-center",
+            autoClose: 2000,
+          })
+        }
+        return { ...state, grids: temp }
+      } else {
+        toast.warn("Wrong Number", {
+          position: "top-center",
+          autoClose: 2000,
+        })
+        return state
+      }
     }
+
     default:
       return state
   }
