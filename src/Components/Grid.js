@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const GridItem = ({ grid, index }) => {
   const handleGridItem = idx => {

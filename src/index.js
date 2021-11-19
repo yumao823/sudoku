@@ -7,18 +7,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import rootReducer from './Reducer'
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import { logger } from 'redux-logger'
-import rootSaga from './Sagas';
+import { createStore } from 'redux';
 
-const sagaMiddleware = createSagaMiddleware()
-
-const store = createStore(
-  rootReducer,
-  applyMiddleware(sagaMiddleware, logger)
-)
-sagaMiddleware.run(rootSaga)
+const store = createStore(rootReducer)
 
 ReactDOM.render(
   <React.StrictMode>

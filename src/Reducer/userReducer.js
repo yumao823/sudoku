@@ -1,17 +1,30 @@
-let state = {}
+import { clone } from 'ramda';
 
-const userReducer = (state, action) => {
+let initialstate = {
+  grids: [
+    [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  ],
+}
+
+const userReducer = (state = initialstate, action) => {
   switch(action.type) {
-    case "USER_FETCH_REQUEST": 
-      return { ...state, response: null, loading: true }
-    case "USER_FETCH_SUCCESS":
-      return { ...state, response: action.response, loading: false }
-    case "USER_FETCH-FALIED":
-      return { ...state, response: null, loading: false }
+    case "NEW_GRID":{
+      let temp = clone(initialstate.grids)
+      temp.map(grid => {
+        grid.sort(() => Math.random() - 0.5)
+      })
+      return { ...state, grids: temp }
+    }
     default:
-      return {
-        response: "Default State"
-      }
+      return state
   }
 }
 

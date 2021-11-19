@@ -5,16 +5,7 @@ import Game from './Components/Game';
 import './App.css';
 
 const App = () => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch({
-      type: "USER_FETCH_REQUEST",
-      payload: {
-        isbnNum: '0545162076',
-      }
-    })
-  }, [])
+  console.log("state: ",useSelector(state => state.state))
 
   return (
     <div className="App">

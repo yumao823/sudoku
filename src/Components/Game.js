@@ -1,30 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { clone } from 'ramda'
 import Options from './Options'
 import Grid from './Grid'
 import NumPad from './NumPad'
 
-const initialgridoptions = [
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-]
-
 const Game = () => {
-  const [grids, setGrids] = useState(initialgridoptions)
+  const grids = useSelector(state => state.state.grids)
+  const dispatch = useDispatch()
 
   const handleNew = () => {
-    let temp = clone(grids)
-    temp.map(grid => {
-      grid.sort(() => Math.random() - 0.5)
-    })
-    setGrids(temp)
+    dispatch({ type: 'NEW_GRID'})
   }
 
   useEffect(() => {
