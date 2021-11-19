@@ -6,7 +6,7 @@ const GridInput = ({ data, row, col }) => {
   const dispatch = useDispatch()
 
   const handleChange = e => {
-    dispatch({ type: 'NEW_ITEM', value: e.target.value, row, col })
+    dispatch({ type: 'NEW_BOARD', value: e.target.value, row, col })
   }
 
   return (

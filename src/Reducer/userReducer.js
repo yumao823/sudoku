@@ -44,7 +44,7 @@ const userReducer = (state = initialstate, action) => {
       return { ...state, rootgrids: sudoku, grids: temp }
     }
 
-    case "NEW_ITEM": {
+    case "NEW_BOARD": {
       const { value, row, col } = action
       const _value = Number(value)
 

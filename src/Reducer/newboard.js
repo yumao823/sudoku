@@ -35,7 +35,7 @@ const boxSafe = (puzzleArray, emptyCell, num) => {
 const safeToPlace = ( puzzleArray, emptyCell, num ) => {
   return rowSafe(puzzleArray, emptyCell, num) && 
   colSafe(puzzleArray, emptyCell, num) && 
-  boxSafe(puzzleArray, emptyCell, num) 
+  boxSafe(puzzleArray, emptyCell, num)
 }
 
 const nextEmptyCell = puzzleArray => {
