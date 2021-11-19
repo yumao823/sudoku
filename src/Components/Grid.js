@@ -18,18 +18,17 @@ const GridInput = ({ data, row, col }) => {
   )
 } 
 
-const GridItem = ({ grid, index }) => {
-  return (
-    <div className="grid_container">
-      {grid.map((item, idx) => (
-        <GridInput key={`g-${idx}`} data={item} row={index} col={idx} />
-      ))}
-    </div>
-  )
-}
+const GridItem = ({ grid, index }) => (
+  <div className="grid_container">
+    {grid.map((item, idx) => (
+      <GridInput key={`g-${idx}`} data={item} row={index} col={idx} />
+    ))}
+  </div>
+)
 
 const Grid = () => {
   const grids = useSelector(state => state.state.grids)
+
   return (
     <div className="grid_container mb-3">
       {grids.map((grid, index) => (
