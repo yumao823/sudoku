@@ -8,12 +8,12 @@ const levels = [
   { value: 'hard', label: 'Hard' },
 ]
 
-const Options = () => {
+const Options = ({ onNew }) => {
   const [level, setLevel] = useState(levels[0])
 
   return (
     <div className="d-flex justify-content-between mb-3">
-      <Button className="fw-bold" variant="light">New Game</Button>
+      <Button className="fw-bold" variant="light" onClick={onNew}>New Game</Button>
       <Select value={level} options={levels} onChange={e => setLevel(e)} />
     </div>
   )

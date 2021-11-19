@@ -1,17 +1,5 @@
 import React, { useState } from 'react'
 
-const initialgridoptions = [
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [1, 2, 3, 4, 5, 6, 7, 8, 9],
-]
-
 const GridItem = ({ grid, index }) => {
   const handleGridItem = idx => {
     console.log(index, " : ", idx)
@@ -30,12 +18,10 @@ const GridItem = ({ grid, index }) => {
   )
 }
 
-const Grid = () => {
-  const [gridOptions, setGridOptions] = useState(initialgridoptions)
-
+const Grid = ({grids}) => {
   return (
     <div className="grid_container mb-3">
-      {gridOptions.map((grid, index) => (
+      {grids.map((grid, index) => (
         <GridItem key={`gi-${index}`} grid={grid} index={index} />
       ))}
     </div>
