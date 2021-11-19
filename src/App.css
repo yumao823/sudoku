@@ -29,14 +29,9 @@
 }
 
 .grid_item {
+  width: 50px;
   border: 1px solid #16697a;
+  background-color: lightgreen;
   cursor: pointer;
-}
-
-.grid_item:hover {
-  background-color: #92c4f6;
-}
-
-.grid_item.active {
-  background-color: red;
+  text-align: center;
 }

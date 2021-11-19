@@ -7,12 +7,13 @@ const GridItem = ({ grid, index }) => {
   return (
     <div className="grid_container">
       {grid.map((item, idx) => (
-        <div
+        <input
+          disabled={item}
           className="grid_item py-2" key={`g-${idx}`}
+          value={item}
           onClick={() => handleGridItem(idx)}
         >
-          {item}
-        </div>
+        </input>
       ))}
     </div>
   )
