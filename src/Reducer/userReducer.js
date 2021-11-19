@@ -1,52 +1,26 @@
 import { clone, equals } from 'ramda';
 import { toast } from 'react-toastify'
+import { newBoard } from './newboard' 
 
 let initialstate = {
   grids: [
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
   ],
 }
 
 const userReducer = (state = initialstate, action) => {
   switch(action.type) {
     case "NEW_GRID": {
-      let sudoku = [];
-
-      Array.prototype.shuffle = function() {
-        var arr = this.valueOf();
-        var ret = [];
-        while (ret.length < arr.length) {
-          var x = arr[Math.floor(Number(Math.random() * arr.length))];
-          if (!(ret.indexOf(x) >= 0)) ret.push(x);
-        }
-        return ret;
-      }
-      var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-      sudoku.push(arr.sort(() => Math.random() - 0.5));
-      for (var i = 1; i < 9; i++) {
-    
-        while (sudoku.length <= i) {
-          var newarr = arr.shuffle();
-          var b = false;
-          for (var j = 0; j < arr.length; j++) {
-            for (var k = 0; k < i; k++) {
-              if (sudoku[k].indexOf(newarr[j]) == j) b = true;
-            }
-    
-          }
-          if (!b) {
-            sudoku.push(newarr);
-          }
-        }
-      }
+      const newboard = initialstate.grids.map(row => row.slice() )
+      const sudoku = newBoard(newboard)
 
       let temp = clone(sudoku)
       let count
