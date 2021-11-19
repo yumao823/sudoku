@@ -18,12 +18,37 @@ let initialstate = {
 const userReducer = (state = initialstate, action) => {
   switch(action.type) {
     case "NEW_GRID": {
-      let temp1 = clone(initialstate.grids)
-      temp1.map(grid => {
-        grid.sort(() => Math.random() - 0.5)
-      })
+      let sudoku = [];
 
-      let temp2 = clone(temp1)
+      Array.prototype.shuffle = function() {
+        var arr = this.valueOf();
+        var ret = [];
+        while (ret.length < arr.length) {
+          var x = arr[Math.floor(Number(Math.random() * arr.length))];
+          if (!(ret.indexOf(x) >= 0)) ret.push(x);
+        }
+        return ret;
+      }
+      var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      sudoku.push(arr.sort(() => Math.random() - 0.5));
+      for (var i = 1; i < 9; i++) {
+    
+        while (sudoku.length <= i) {
+          var newarr = arr.shuffle();
+          var b = false;
+          for (var j = 0; j < arr.length; j++) {
+            for (var k = 0; k < i; k++) {
+              if (sudoku[k].indexOf(newarr[j]) == j) b = true;
+            }
+    
+          }
+          if (!b) {
+            sudoku.push(newarr);
+          }
+        }
+      }
+
+      let temp = clone(sudoku)
       let count
       switch (action.level) {
         case 'easy':
@@ -38,11 +63,11 @@ const userReducer = (state = initialstate, action) => {
         default: count = 3
           break;
       }
-      temp2.forEach(grid => {
+      temp.forEach(grid => {
         for(let i=0; i<count; i++) grid[Math.floor((Math.random()*grid.length))] = 0
       });
 
-      return { ...state, rootgrids: temp1, grids: temp2 }
+      return { ...state, rootgrids: sudoku, grids: temp }
     }
 
     case "NEW_ITEM": {
