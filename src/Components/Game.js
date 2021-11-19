@@ -10,12 +10,16 @@ const Game = () => {
   const dispatch = useDispatch()
 
   const handleNew = () => {
-    dispatch({ type: 'NEW_GRID'})
+    dispatch({ type: 'NEW_GRID', level: level.value})
   }
 
   useEffect(() => {
     handleNew()
   }, [])
+
+  useEffect(() => {
+    handleNew()
+  }, [level])
 
   return (
     <div className="w-100">
